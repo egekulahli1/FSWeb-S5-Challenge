@@ -1,3 +1,4 @@
+import axios from "axios";
 const Header = (baslik, tarih, yazi) => {
   // GÖREV 1
   // ---------------------
@@ -11,6 +12,26 @@ const Header = (baslik, tarih, yazi) => {
   //    <span class="temp">{ yazi }</span>
   //  </div>
   //
+  const header = document.createElement('div');
+  header.className = 'header';
+  
+  const date = document.createElement('span');
+  date.className = 'date';
+  date.textContent = tarih;
+  
+  const title = document.createElement('h1');
+  title.textContent = baslik;
+  
+  const temp = document.createElement('span');
+  temp.className = 'temp';
+  temp.textContent = yazi;
+  
+  header.appendChild(date);
+  header.appendChild(title);
+  header.appendChild(temp);
+  
+  return header;
+
 }
 
 const headerEkleyici = (secici) => {
@@ -23,7 +44,15 @@ const headerEkleyici = (secici) => {
 
   // İPUCU: querySelector bir string alabilir (bknz: querySelector("#wrapper")) 
   // fakat aynı zamanda bir değişken de alabilir (bknz: querySelector(secici))
- 
+  const baslik = "Teknoloji Haberleri";
+  const tarih = "25 Mart 2023";
+  const yazi = "Örnek Yazı";
+
+  const header = Header(baslik, tarih, yazi);
+
+  const targetElement = document.querySelector(secici);
+  targetElement.appendChild(header);
 }
+
 
 export { Header, headerEkleyici }
